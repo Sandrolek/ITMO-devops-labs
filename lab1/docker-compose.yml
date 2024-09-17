@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app1:
+    build: 
+      context: app1
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8000"
+    container_name: app1
+
+  app2:
+    build: 
+      context: app1
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8000"
+    container_name: app2
+
+  nginx:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - app1
+      - app2
