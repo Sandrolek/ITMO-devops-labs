@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:1.21.6
+    ports:
+      - "127.0.0.1:8080:80"
+    environment:
+      - DEBUG=false
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - app_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+
+  db:
+    image: postgres:13.4
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app_network 
+    deploy:
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 1G
+    depends_on:
+      - web
+
+volumes:
+  db_data:
+
+networks:
+  app_network:
+    driver: bridge
