@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    environment:
+      - DEBUG=true
+    volumes:
+      - ./app:/var/www/html
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    depends_on:
+      - web
