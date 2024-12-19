@@ -22,13 +22,13 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Bitwarden secrets
-          uses: bitwarden/sm-action@v2
-          with:
-            access_token: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
-            base_url: https://vault.bitwarden.com
-            secrets: |
-              c7ba33b0-14d6-4aae-9c06-b20f010dab86 > DOCKERHUB_USERNAME
-              7998fe1d-dcc5-4613-ac5d-b20f010cb5ed > DOCKERHUB_TOKEN
+        uses: bitwarden/sm-action@v2
+        with:
+          access_token: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
+          base_url: https://vault.bitwarden.com
+          secrets: |
+            c7ba33b0-14d6-4aae-9c06-b20f010dab86 > DOCKERHUB_USERNAME
+            7998fe1d-dcc5-4613-ac5d-b20f010cb5ed > DOCKERHUB_TOKEN
 
       # Шаг 3: Логинимся в Docker Hub
       - name: Log in to Docker Hub
