@@ -27,8 +27,8 @@ jobs:
           access_token: ${{ secrets.BITWARDEN_ACCESS_TOKEN }}
           base_url: https://vault.bitwarden.com
           secrets: |
-            c7ba33b0-14d6-4aae-9c06-b20f010dab86 > DOCKERHUB_USERNAME
-            7998fe1d-dcc5-4613-ac5d-b20f010cb5ed > DOCKERHUB_TOKEN
+            1d141966-9cef-4330-b528-b24b0116f428 > DOCKERHUB_USERNAME
+            598586dd-78b8-49e4-bd9d-b24b011703d4 > DOCKERHUB_TOKEN
 
       # Шаг 3: Логинимся в Docker Hub
       - name: Log in to Docker Hub
