@@ -13,11 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Шаг 1: Checkout кода
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Шаг 2: Установка Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -30,25 +28,21 @@ jobs:
             1d141966-9cef-4330-b528-b24b0116f428 > DOCKERHUB_USERNAME
             598586dd-78b8-49e4-bd9d-b24b011703d4 > DOCKERHUB_TOKEN
 
-      # Шаг 3: Логинимся в Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_TOKEN }}
 
-      # Шаг 4: Сборка Docker-образа
       - name: Build Docker image
         run: |
           docker build -t ${{ env.DOCKERHUB_USERNAME }}/lab3-docker:ci_cd lab3/
 
-      # Шаг 5: Публикация Docker-образа на Docker Hub
       - name: Push Docker image
         run: |
           docker push ${{ env.DOCKERHUB_USERNAME }}/lab3-docker:ci_cd
 
-      # Шаг 6: Проверка работы контейнера (тесты)
-      - name: Run Docker container and tests
+      - name: Run Docker container
         run: |
           docker run -d -p 3000:3000 ${{ env.DOCKERHUB_USERNAME }}/lab3-docker:ci_cd
           sleep 5
