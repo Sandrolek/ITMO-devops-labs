@@ -30,13 +30,13 @@
 
 Была дана следующая таблица
 
-![Result](/cloud_reports/images/table_before.png)
+![Result](/cloud_reports/images/aws_before.png)
 
 На основе документации AWS была заполнена таблица, распределены IT Towers&Service Family из примера.
 
 Также доступно по [ссылке](https://docs.google.com/spreadsheets/d/1APUiX-jnBX_BIRx2991oHUj0_RT6bmdf/edit?usp=sharing&ouid=110913290843078262056&rtpof=true&sd=true)
 
-![Result](/cloud_reports/images/table.png)
+![Result](/cloud_reports/images/aws_res.png)
 
 Пока я работал с документацией, выделил следующие сервисы от AWS:
 
